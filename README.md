@@ -12,7 +12,7 @@ In an empty directory (the 'working directory'), on a machine with Docker instal
 1. In the master branch of this repository, one time only, find the scripts directory, and copy the file dao_run.sh to the working directory. e.g.:
 
    ```
-   wget https://raw.github.com/opencadc/dao2caom2/master/scripts/dao_run.sh
+   wget https://raw.github.com/opencadc-metadata-curation/dao2caom2/master/scripts/dao_run.sh
    ```
 
 1. Ensure the script is executable, one time only:
@@ -48,7 +48,7 @@ In an empty directory (the 'working directory'), on a machine with Docker instal
 1. In the master branch of this repository, find the scripts directory, and copy the file dao_run_state.sh to the working directory. e.g.:
 
   ```
-  wget https://raw.github.com/opencadc/dao2caom2/master/scripts/dao_run_state.sh
+  wget https://raw.github.com/opencadc-metadata-curation/dao2caom2/master/scripts/dao_run_state.sh
   ```
 
 2. Ensure the script is executable:
