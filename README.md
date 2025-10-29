@@ -27,7 +27,7 @@ In an empty directory (the 'working directory'), on a machine with Docker instal
     ./dao_run.sh
     ```
     
-1. The config.yml file will be created in the 'working directory'. This file controls the execution of the application. See [here](https://github.com/opencadc/collection2caom2/wiki/config.yml) for a description of the entries in this file.
+1. The config.yml file will be created in the 'working directory'. This file controls the execution of the application. See [here](https://github.com/opencadc-metadata-curation/collection2caom2/wiki/config.yml) for a description of the entries in this file.
 
 1. To debug the application from inside the container:
 
@@ -37,9 +37,9 @@ In an empty directory (the 'working directory'), on a machine with Docker instal
    ```
 
 1. For some instructions that might be helpful on using containers, see:
-https://github.com/opencadc/collection2caom2/wiki/Docker-and-Collections
+https://github.com/opencadc-metadata-curation/collection2caom2/wiki/Docker-and-Collections
 
-1. For some insight into what's happening, see: https://github.com/opencadc/collection2caom2
+1. For some insight into what's happening, see: https://github.com/opencadc-metadata-curation/collection2caom2
 
 # How to Run dao2caom2 incrementally:
 
