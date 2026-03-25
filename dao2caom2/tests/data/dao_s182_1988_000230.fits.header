@@ -1,0 +1,42 @@
+# HDU 0 in dao_s182_1988_000230.fits:
+SIMPLE  =                    T / conforms to FITS standard                      
+BITPIX  =                   16 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                 3744                                                  
+NAXIS2  =                    2                                                  
+                                                                                
+OBJECT1 = 'NGC6764 '           / ARC          / UPPER ROW LABEL                 
+OBJECT2 = 'NGC6764 '           / ARC          / LOWER ROW LABEL                 
+EXPTIME = '121     '           / TOTAL INTEGRATION TIME                         
+UT      = '04:05:47'           / UT date and time at start of the observation   
+DATE-OBS= '1988-09-08T04:05:47' / UT date and time at start of the observation  
+                                                                                
+ST      = 'HH:MM:SS'           / SIDEREAL TIME AT START OF EXPOSURE             
+ZD      = 'DD:MM:SS'           / ZENITH DISTANCE IN DEGREES                     
+RA      = '00:00:00'           / arbitrary coordinates                          
+DEC     = '+00:00:00'          / arbitrary coordinates                          
+EQUINOX =               2000.0 / EPOCH OF RA AND DEC                            
+                                                                                
+                                                                                
+ORIGIN  = 'NRC HAARC'                                                           
+DETECTOR= 'SHECTOGRAPH'                                                         
+TELESCOP= '1.8-m   '                                                            
+OBSERVER= 'PENFOLD '           / BOND                                           
+                                                                                
+HISTORY                                                                         
+COMMENT                                                                         
+OBSERVAT= 'DAO     '                                                            
+EXPNUM  = 'dao_s182_1988_000230'                                                
+CTYPE1  = 'PIXEL   '                                                            
+CTYPE2  = 'PIXEL   '                                                            
+MJD-OBS =         47412.170683 / MJD-OBS determined from DATE-OBS               
+OBJECT  = 'NGC6764 arc'                                                         
+INSTRUME= 'Cassegrain Spectrograph'                                             
+OBSMODE = 'single-slit spectroscopy'                                            
+PIXSIZE =                   15                                                  
+DISPAXIS=                    1                                                  
+XBIN    =                    1                                                  
+OBSTYPE = 'comparison'                                                          
+BSCALE  =                    1                                                  
+BZERO   =                32768                                                  
+RELEASE = '1988-09-08T04:05:47'                                                 

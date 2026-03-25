@@ -1,0 +1,44 @@
+# HDU 0 in dao_rv122_1991_002922.fits:
+SIMPLE  =                    T / conforms to FITS standard                      
+BITPIX  =                   32 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                   51 / NO. OF STEPS = ENDB-ENDA+1                     
+NAXIS2  =                    6 / STAR, MONITOR AND ENCODER(MICRONS)             
+                               /                                                
+OBJECT  = 'HD  3712'           / OBJECT LABEL                                   
+                               /                                                
+ITIME   =                  178 / OBJECT INTEGRATION TIME IN SECONDS             
+RTS     =                      / REDUCTION TO SUN (KM/SEC)                      
+UT      = '06:59:01'           / UT at start of exposure                        
+DATE-OBS= '1991-11-28T06:59:01' / UT date/time at start of exposure             
+MIDTIME = '91/11/28 07:00:30'  / MIDTIME (UT)                                   
+RA      = '00:34:50.0'         / RA POSITION                                    
+DEC     = '+55:59:18'          / DEC POSITION                                   
+RVS     =              165.800 / RADIAL VELOCITY FACTOR KM/SEC/M.M.             
+MSKNAME = 'F96SEP0187'         / MASK NAME                                      
+                               /                                                
+NSCANS  =                  100 / NUMBER OF SCANS                                
+ENDA    =                   -8 / END A OF SCAN RANGE                            
+ENDB    =                   42 / END B OF SCAN RANGE                            
+ORIGIN  = 'NRC HAARC'                                                           
+INSTRUME= 'Radial-Velocity Scanner'                                             
+TELESCOP= '1.2-m   '                                                            
+OBSERVER= 'Hrivnak '                                                            
+HISTORY =                                                                       
+COMMENT =                                                                       
+VAXFILE = 'RV122.91;2922'      / VAXFILE NAME                                   
+ENCODER =                    T / ENCODER DATA. T OR F                           
+ENC-CORR=                  0.0 / ENCODER CORR(MICRONS) FROM LAST ZPT            
+DETECTOR= 'EMI9840 PMT'                                                         
+OBSERVAT= 'DAO     '                                                            
+OBSMODE = 'single-slit spectroscopy'                                            
+GEM_STAT= 'GEM:On  '           / GEM STATUS                                     
+EQUINOX =               1900.0 / Equinox for RA and DEC                         
+EXPTIME =                  178 / Integration time (s)                           
+UTMIDDLE=    7.008333333333334 / UT at mid-exposure                             
+UT-DATE = '1991-11-28'         / The UT date at start of exposure               
+RELEASE = '1992-11-28T06:59:01' / Date when the proprietary period expires      
+MJD-OBS =    48588.29098379629 / Modified JD at start of exposure               
+EXPNUM  = 'dao_rv122_1991_002922' / The unique DAO archive exposure number      
+OBSTYPE = 'object  '           / Derived from OBJECT value                      
+                               /                                                

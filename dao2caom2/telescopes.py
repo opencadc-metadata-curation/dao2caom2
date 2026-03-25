@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -581,8 +581,7 @@ class DAOTelescopeMapping(cc.TelescopeMapping2):
         obs_type = self._headers[ext].get('OBSTYPE')
         result = None
         if obs_type in ['dark', 'object']:
-            # DB - set entrance aperture to a fixed 5" by 5" because of lack
-            # of detailed information
+            # DB - set entrance aperture to a fixed 5" by 5" because of lack of detailed information
             result = 0.001388
         return result
 
@@ -641,11 +640,11 @@ class DAOTelescopeMapping(cc.TelescopeMapping2):
         return exptime / ncombine
 
     def get_position_function_coord1_val(self, ext):
-        ra, ignore_dec = self._get_position(ext)
+        ra, _ = self._get_position(ext)
         return ra
 
     def get_position_function_coord2_val(self, ext):
-        ignore_ra, dec = self._get_position(ext)
+        _, dec = self._get_position(ext)
         return dec
 
     def _get_position(self, ext):
@@ -833,13 +832,25 @@ class Imaging(DAOTelescopeMapping):
     def get_energy_resolving_power(self, ext):
         wavelength = self._headers[ext].get('WAVELENG')
         bandpass = self._headers[ext].get('BANDPASS')
-        return wavelength / bandpass
+        result = None
+        if wavelength is not None and bandpass is not None:
+            result = wavelength / bandpass
+        return result
 
     def get_position_function_cd11(self, ext):
-        return self._get_position_by_scale_size_bin(ext)
+        cd11 = self._headers[ext].get('CD1_1')
+        if cd11:
+            return cd11
+        else:
+            return self._get_position_by_scale_size_bin(ext)
 
     def get_position_function_cd22(self, ext):
-        return self._get_position_by_scale_size_bin(ext)
+        cd22 = self._headers[ext].get('CD2_2')
+        if cd22:
+            result = cd22
+        else:
+            result = self._get_position_by_scale_size_bin(ext)
+        return result
 
     def get_position_function_coord1_pix(self, ext):
         return self._headers[ext].get('NAXIS1') / 2.0

@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # ***********************************************************************
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2020.                            (c) 2020.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -75,6 +74,7 @@ Thumbnails and Previews are proprietary for science datasets.
 import matplotlib.pyplot as plt
 import numpy as np
 
+from array import array
 from astropy.io import fits
 from astropy.visualization import ZScaleInterval, SqrtStretch, ImageNormalize
 from matplotlib import pylab
@@ -94,15 +94,20 @@ class DAOPreview(mc.PreviewVisitor):
         self._logger.info(f'Building preview and thumbnail with {self._science_fqn}')
         self._hdu_list = fits.open(self._science_fqn)
         header = self._hdu_list[self._ext].header
+        detector = header.get('DETECTOR')
 
         if (
             'e' in self._storage_name.file_name
             or 'p' in self._storage_name.file_name
-            or 'v' in self._storage_name.file_name
+            or '_v' in self._storage_name.file_name
         ):
             count += self._do_cal_processed(header, obs_id)
+        elif '_rv' in self._storage_name.file_name:
+            count += self._do_rvs(header)
         elif self._storage_name.file_name.startswith('a'):
             count += self._do_skycam()
+        elif detector == 'SHECTOGRAPH':
+            count += self._do_shectograph(header)
         else:
             count += self._do_sci(header)
 
@@ -151,6 +156,39 @@ class DAOPreview(mc.PreviewVisitor):
                 f'{self._storage_name.file_id}: {object_type}',
             )
             count = 2
+        return count
+
+    def _do_rvs(self, header):
+        self._logger.debug('Begin _do_rvs')
+        object_name = header['OBJECT']
+        nscans = header['NSCANS']
+        fluxf = self._hdu_list[self._ext].data[0]
+        fluxb = self._hdu_list[self._ext].data[1]
+        flux_ave = (fluxf + fluxb)/2.0
+        encoderf = self._hdu_list[self._ext].data[4]
+        encoderb = self._hdu_list[self._ext].data[5]
+        encoder_ave = (encoderf + encoderb)/(2.0 * nscans)
+
+        count = 0
+        plt.clf()
+        plt.grid(True)
+        plt.xlim(min(encoder_ave), max(encoder_ave))
+        plt.plot( encoder_ave, flux_ave, 'k+')
+        plt.xlabel(r'Steps', color='k')
+        plt.ylabel(r'Intensity', color='k')
+        plt.ylim(0.9*min(flux_ave), 1.02*max(flux_ave))
+        plt.title( f'{self._storage_name.file_id}: {object_name}', color='k', fontweight='bold')
+        temp_fn = 'temp.png'
+        plt.savefig(temp_fn, format='png')
+        img = Image.open(temp_fn)
+        img.thumbnail((1024, 1024))
+        img.save(self._preview_fqn)
+        count = 1
+        img.thumbnail((256, 256))
+        img.save(self._thumb_fqn)
+        count = 2
+        self.add_to_delete(f'{self._working_dir}/{temp_fn}')
+        self._logger.debug(f'End _do_rvs with {count} files generated.')
         return count
 
     def _do_sci(self, header):
@@ -215,6 +253,52 @@ class DAOPreview(mc.PreviewVisitor):
             mc.exec_cmd(thumbnail_cmd)
             count = 2
         return count
+
+    def _do_shectograph(self, header):
+        # unprocessed Shectograph spectrum
+        self._logger.info('Building previews for Shectograph data')
+        object_name = header['OBJECT']
+        object1 = header['OBJECT1']
+        object2 = header['OBJECT2']
+        naxis1 = header['NAXIS1']
+        if object1 and object2 and naxis1:
+            if 'sky' in object1.lower():
+                subtract_sky = True
+                skyrow = 0
+                objectrow = 1
+            elif 'sky' in object2.lower():
+                subtract_sky = True
+                skyrow = 1
+                objectrow = 0
+            else:
+                subtract_sky = False
+                skyrow = 1
+                objectrow = 0
+
+            signal = self._hdu_list[self._ext].data[objectrow]
+            if subtract_sky == True:
+                background = self._hdu_list[self._ext].data[skyrow]
+                flux = signal - background
+                bkgrd_text = ' (sky subtracted)'
+            else:
+                flux = signal
+                bkgrd_text = ''
+            flux = signal
+
+            wl = []
+            for i in range(0,naxis1):
+                wl.append(i+1)
+
+            wln = np.array(wl)
+
+            self._write_files_to_disk(wln, flux, 'Pixel', f'{self._storage_name.file_id} : {object_name}{bkgrd_text}')
+            count = 1
+            count += self._gen_thumbnail()
+            self._logger.debug(f'End _do_shectograph with {count} files generated.')
+            return count
+        else:
+            self._logger.error('OBJECT1 or OBJECT2 keywords were not found!')
+            return 0
 
     def _do_skycam(self):
         self._hdulist = fits.open(self._science_fqn)
