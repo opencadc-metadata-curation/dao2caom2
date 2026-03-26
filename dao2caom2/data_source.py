@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -67,7 +67,7 @@
 #
 
 from caom2pipe import data_source_composable as dsc
-from dao2caom2 import dao_name
+from dao2caom2 import storage_name
 
 
 __all__ = ['DAOLocalFilesDataSource', 'DAOVaultDataSource']
@@ -80,16 +80,16 @@ class DAOLocalFilesDataSource(dsc.LocalFilesDataSourceRunnerMeta):
             cadc_client,
             config.recurse_data_sources,
             scheme=config.scheme,
-            storage_name_ctor=dao_name.DAOName,
+            storage_name_ctor=storage_name.DAOName,
         )
 
     def get_collection(self, f_name):
-        return dao_name.get_collection(f_name)
+        return storage_name.get_collection(f_name)
 
 
 class DAOVaultDataSource(dsc.VaultCleanupDataSourceRunnerMeta):
     def __init__(self, config, vault_client, cadc_client):
-        super().__init__(config, vault_client, cadc_client, dao_name.DAOName)
+        super().__init__(config, vault_client, cadc_client, storage_name.DAOName)
 
     def get_collection(self, f_name):
-        return dao_name.get_collection(f_name)
+        return storage_name.get_collection(f_name)

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="78ca0d04-6070-467d-889a-5e68340f2982" caom2:metaProducer="dao2caom22caom2/0.0.0">
+  <caom2:collection>DAO</caom2:collection>
+  <caom2:observationID>dao_rv122_1991_002922</caom2:observationID>
+  <caom2:metaRelease>1991-11-28T06:59:01.000</caom2:metaRelease>
+  <caom2:algorithm>
+    <caom2:name>exposure</caom2:name>
+  </caom2:algorithm>
+  <caom2:type>object</caom2:type>
+  <caom2:intent>science</caom2:intent>
+  <caom2:target>
+    <caom2:name>HD  3712</caom2:name>
+    <caom2:type>object</caom2:type>
+    <caom2:standard>false</caom2:standard>
+    <caom2:moving>false</caom2:moving>
+  </caom2:target>
+  <caom2:telescope>
+    <caom2:name>DAO 1.2-m</caom2:name>
+    <caom2:geoLocationX>-2331226.785412281</caom2:geoLocationX>
+    <caom2:geoLocationY>-3532798.9784666346</caom2:geoLocationY>
+    <caom2:geoLocationZ>4755607.337178416</caom2:geoLocationZ>
+  </caom2:telescope>
+  <caom2:instrument>
+    <caom2:name>Radial-Velocity Scanner</caom2:name>
+  </caom2:instrument>
+  <caom2:planes>
+    <caom2:plane caom2:id="e3923317-b44b-4786-95df-8266c26dd0ed" caom2:metaProducer="dao2caom22caom2/0.0.0">
+      <caom2:productID>dao_rv122_1991_002922</caom2:productID>
+      <caom2:metaRelease>1991-11-28T06:59:01.000</caom2:metaRelease>
+      <caom2:dataRelease>1992-11-28T06:59:01.000</caom2:dataRelease>
+      <caom2:dataProductType>spectrum</caom2:dataProductType>
+      <caom2:calibrationLevel>1</caom2:calibrationLevel>
+      <caom2:provenance>
+        <caom2:name>DAO unprocessed data</caom2:name>
+        <caom2:project>DAO Science Archive</caom2:project>
+        <caom2:producer>NRC Herzberg</caom2:producer>
+        <caom2:reference>https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/dao/</caom2:reference>
+      </caom2:provenance>
+      <caom2:artifacts>
+        <caom2:artifact caom2:id="92d3d9a7-3ef4-4130-848c-6aa70c80b968" caom2:metaProducer="dao2caom22caom2/0.0.0">
+          <caom2:uri>cadc:DAO/dao_rv122_1991_002922.fits</caom2:uri>
+          <caom2:productType>science</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:parts>
+            <caom2:part caom2:id="f4dd046b-28dd-410f-aee4-029b95bfd258">
+              <caom2:name>0</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8b348bf9-c6d3-48a1-a258-587195bb1edf" caom2:metaProducer="dao2caom22caom2/0.0.0">
+                  <caom2:observable>
+                    <caom2:dependent>
+                      <caom2:axis>
+                        <caom2:ctype>FLUX</caom2:ctype>
+                        <caom2:cunit>COUNTS</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:bin>1</caom2:bin>
+                    </caom2:dependent>
+                  </caom2:observable>
+                  <caom2:position>
+                    <caom2:axis>
+                      <caom2:axis1>
+                        <caom2:ctype>RA---TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis1>
+                      <caom2:axis2>
+                        <caom2:ctype>DEC--TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis2>
+                      <caom2:function>
+                        <caom2:dimension>
+                          <caom2:naxis1>1</caom2:naxis1>
+                          <caom2:naxis2>1</caom2:naxis2>
+                        </caom2:dimension>
+                        <caom2:refCoord>
+                          <caom2:coord1>
+                            <caom2:pix>1.0</caom2:pix>
+                            <caom2:val>10.1255405527573</caom2:val>
+                          </caom2:coord1>
+                          <caom2:coord2>
+                            <caom2:pix>1.0</caom2:pix>
+                            <caom2:val>56.53765660599731</caom2:val>
+                          </caom2:coord2>
+                        </caom2:refCoord>
+                        <caom2:cd11>-0.001388</caom2:cd11>
+                        <caom2:cd12>0.0</caom2:cd12>
+                        <caom2:cd21>0.0</caom2:cd21>
+                        <caom2:cd22>0.001388</caom2:cd22>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:coordsys>FK4</caom2:coordsys>
+                    <caom2:equinox>1900.0</caom2:equinox>
+                  </caom2:position>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.002060185185185185</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>48588.290983796294</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>178.0</caom2:exposure>
+                    <caom2:resolution>178.0</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+          </caom2:parts>
+        </caom2:artifact>
+      </caom2:artifacts>
+    </caom2:plane>
+  </caom2:planes>
+</caom2:Observation>

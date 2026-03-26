@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -69,7 +69,7 @@ import glob
 import os
 
 from caom2pipe import manage_composable as mc
-from dao2caom2 import preview_augmentation, dao_name
+from dao2caom2 import preview_augmentation, storage_name
 
 TEST_FILES_DIR = '/test_files'
 
@@ -104,6 +104,8 @@ def test_visit(test_config, test_data_dir, tmp_path):
             'dao_c122_2007_000881_e.fits',
         ],
         'sky_cam_start.xml': ['a2020_06_17_07_00_01.fits'],
+        'shectograph_start.xml': ['dao_s182_1988_000230.fits'],
+        'rvs_start.xml': ['dao_rv122_1991_002576.fits'],
     }
 
     test_checksums = {
@@ -142,7 +144,7 @@ def test_visit(test_config, test_data_dir, tmp_path):
     for key, value in test_files.items():
         obs = mc.read_obs_from_file(f'{test_data_dir}/previews/{key}')
         for f_name in value:
-            test_name = dao_name.DAOName([f_name])
+            test_name = storage_name.DAOName([f_name])
             kwargs['storage_name'] = test_name
 
             try:
