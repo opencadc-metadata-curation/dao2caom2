@@ -69,7 +69,7 @@ import glob
 import os
 
 from caom2pipe import manage_composable as mc
-from dao2caom2 import preview_augmentation, dao_name
+from dao2caom2 import preview_augmentation, storage_name
 
 TEST_FILES_DIR = '/test_files'
 
@@ -144,7 +144,7 @@ def test_visit(test_config, test_data_dir, tmp_path):
     for key, value in test_files.items():
         obs = mc.read_obs_from_file(f'{test_data_dir}/previews/{key}')
         for f_name in value:
-            test_name = dao_name.DAOName([f_name])
+            test_name = storage_name.DAOName([f_name])
             kwargs['storage_name'] = test_name
 
             try:

@@ -1,5 +1,5 @@
 from .composable import *  # noqa
-from .dao_name import *  # noqa
+from .storage_name import *  # noqa
 from .data_source import *  # noqa
 from .cleanup_augmentation import *  # noqa
 from .fits2caom2_augmentation import *  # noqa

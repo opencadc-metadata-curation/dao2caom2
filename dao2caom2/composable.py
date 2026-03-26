@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -81,7 +81,7 @@ from caom2pipe import client_composable as clc
 from caom2pipe import data_source_composable as dsc
 from caom2pipe import manage_composable as mc
 from caom2pipe import run_composable as rc
-from dao2caom2 import dao_name, preview_augmentation
+from dao2caom2 import preview_augmentation, storage_name
 from dao2caom2 import cleanup_augmentation, data_source, transfer
 from dao2caom2 import fits2caom2_augmentation
 
@@ -108,14 +108,14 @@ def _run():
     if config.use_local_files:
         files_source = data_source.DAOLocalFilesDataSource(config, clients.data_client)
     else:
-        files_source = dsc.TodoFileDataSourceRunnerMeta(config, dao_name.DAOName)
+        files_source = dsc.TodoFileDataSourceRunnerMeta(config, storage_name.DAOName)
     return rc.run_by_todo_runner_meta(
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
         clients=clients,
         config=config,
         sources=[files_source],
-        storage_name_ctor=dao_name.DAOName,
+        storage_name_ctor=storage_name.DAOName,
     )
 
 
@@ -149,7 +149,7 @@ def _run_vo():
         sources=[source],
         clients=clients,
         store_transfer=store_transferrer,
-        storage_name_ctor=dao_name.DAOName,
+        storage_name_ctor=storage_name.DAOName,
     )
 
 
@@ -176,14 +176,14 @@ def _run_state():
             files_source = data_source.DAOLocalFilesDataSource(config, clients.data_client)
     else:
         files_source = dsc.LocalFilesDataSourceRunnerMeta(
-            config, clients.data_client, config.recurse_data_sources, config.scheme, dao_name.DAOName
+            config, clients.data_client, config.recurse_data_sources, config.scheme, storage_name.DAOName
         )
     return rc.run_by_state_runner_meta(
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
         sources=[files_source],
         clients=clients,
-        storage_name_ctor=dao_name.DAOName,
+        storage_name_ctor=storage_name.DAOName,
     )
 
 

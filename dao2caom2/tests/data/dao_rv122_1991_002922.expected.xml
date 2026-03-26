@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="53d13e6b-9a8c-47c3-b346-cb0cd5d131ef" caom2:metaProducer="dao2caom22caom2/0.0.0">
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="78ca0d04-6070-467d-889a-5e68340f2982" caom2:metaProducer="dao2caom22caom2/0.0.0">
   <caom2:collection>DAO</caom2:collection>
   <caom2:observationID>dao_rv122_1991_002922</caom2:observationID>
   <caom2:metaRelease>1991-11-28T06:59:01.000</caom2:metaRelease>
@@ -15,16 +15,16 @@
     <caom2:moving>false</caom2:moving>
   </caom2:target>
   <caom2:telescope>
-    <caom2:name>DAO 1.8-m</caom2:name>
-    <caom2:geoLocationX>-2331180.023616546</caom2:geoLocationX>
-    <caom2:geoLocationY>-3532960.1603673426</caom2:geoLocationY>
-    <caom2:geoLocationZ>4755520.510544373</caom2:geoLocationZ>
+    <caom2:name>DAO 1.2-m</caom2:name>
+    <caom2:geoLocationX>-2331226.785412281</caom2:geoLocationX>
+    <caom2:geoLocationY>-3532798.9784666346</caom2:geoLocationY>
+    <caom2:geoLocationZ>4755607.337178416</caom2:geoLocationZ>
   </caom2:telescope>
   <caom2:instrument>
     <caom2:name>Radial-Velocity Scanner</caom2:name>
   </caom2:instrument>
   <caom2:planes>
-    <caom2:plane caom2:id="11de8374-7c45-4c1d-9144-b6b9f2243a9a" caom2:metaProducer="dao2caom22caom2/0.0.0">
+    <caom2:plane caom2:id="e3923317-b44b-4786-95df-8266c26dd0ed" caom2:metaProducer="dao2caom22caom2/0.0.0">
       <caom2:productID>dao_rv122_1991_002922</caom2:productID>
       <caom2:metaRelease>1991-11-28T06:59:01.000</caom2:metaRelease>
       <caom2:dataRelease>1992-11-28T06:59:01.000</caom2:dataRelease>
@@ -37,16 +37,16 @@
         <caom2:reference>https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/dao/</caom2:reference>
       </caom2:provenance>
       <caom2:artifacts>
-        <caom2:artifact caom2:id="13ac443a-6583-4355-a79f-62d2c3f297b0" caom2:metaProducer="dao2caom22caom2/0.0.0">
+        <caom2:artifact caom2:id="92d3d9a7-3ef4-4130-848c-6aa70c80b968" caom2:metaProducer="dao2caom22caom2/0.0.0">
           <caom2:uri>cadc:DAO/dao_rv122_1991_002922.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
           <caom2:parts>
-            <caom2:part caom2:id="2876f694-afce-4957-9e63-21fe45912f34">
+            <caom2:part caom2:id="f4dd046b-28dd-410f-aee4-029b95bfd258">
               <caom2:name>0</caom2:name>
               <caom2:chunks>
-                <caom2:chunk caom2:id="c84d9983-bc95-4f22-a71a-9902bf304fd5" caom2:metaProducer="dao2caom22caom2/0.0.0">
+                <caom2:chunk caom2:id="8b348bf9-c6d3-48a1-a258-587195bb1edf" caom2:metaProducer="dao2caom22caom2/0.0.0">
                   <caom2:observable>
                     <caom2:dependent>
                       <caom2:axis>

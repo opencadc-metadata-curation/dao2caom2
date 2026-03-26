@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -89,18 +89,18 @@ def pytest_generate_tests(metafunc):
 
 def test_visitor(test_name, test_config, tmp_path):
     test_config.change_working_directory(tmp_path.as_posix())
-    dao_name = DAOName([test_name.replace('.header', '.gz')])
-    file_info = FileInfo(id=dao_name.file_uri, file_type='application/fits')
+    storage_name = DAOName([test_name.replace('.header', '.gz')])
+    file_info = FileInfo(id=storage_name.file_uri, file_type='application/fits')
     headers = ac.make_headers_from_file(test_name)
-    dao_name.metadata = {dao_name.file_uri: headers}
-    dao_name.file_info = {dao_name.file_uri: file_info}
+    storage_name.metadata = {storage_name.file_uri: headers}
+    storage_name.file_info = {storage_name.file_uri: file_info}
     test_reporter = mc.ExecutionReporter2(test_config)
     kwargs = {
-        'storage_name': dao_name,
+        'storage_name': storage_name,
         'config': test_config,
         'reporter': test_reporter,
     }
-    expected_fqn = f'{TEST_DATA_DIR}/{dao_name.file_id}.expected.xml'
+    expected_fqn = f'{TEST_DATA_DIR}/{storage_name.file_id}.expected.xml'
     actual_fqn = expected_fqn.replace('expected', 'actual')
     if exists(actual_fqn):
         unlink(actual_fqn)

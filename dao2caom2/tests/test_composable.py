@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -74,7 +74,7 @@ from mock import ANY, Mock, patch, call
 
 from cadcdata import FileInfo
 from caom2pipe import manage_composable as mc
-from dao2caom2 import composable, dao_name
+from dao2caom2 import composable, storage_name
 
 F_NAME_LIST = [
     'data_report.txt',
@@ -106,7 +106,7 @@ def test_run(run_mock, access_mock, test_config, tmp_path, change_test_dir):
     assert run_mock.called, 'should have been called'
     args, _ = run_mock.call_args
     test_storage = args[0]
-    assert isinstance(test_storage, dao_name.DAOName), type(test_storage)
+    assert isinstance(test_storage, storage_name.DAOName), type(test_storage)
     assert test_storage.obs_id == test_obs_id, 'wrong obs id'
     assert test_storage.file_name == test_f_name, 'wrong file name'
     assert (
@@ -134,7 +134,7 @@ def test_run_vo(run_mock, vo_client_mock, access_mock, test_data_dir):
         assert run_mock.called, 'should have been called'
         args, kwargs = run_mock.call_args
         test_storage = args[0]
-        assert isinstance(test_storage, dao_name.DAOName), type(test_storage)
+        assert isinstance(test_storage, storage_name.DAOName), type(test_storage)
         assert test_storage.obs_id == test_obs_id, 'wrong obs id'
         assert test_storage.file_name == test_f_name, 'wrong file name'
         assert test_storage.source_names == ['vos:goliaths/DAOTest/sky_cam_image.fits.gz'], 'wrong source names'
@@ -171,8 +171,8 @@ def test_run_store_ingest(
     change_test_dir,
 ):
     temp_deque = deque()
-    test_storage_name_1 = dao_name.DAOName(['/data/dao_c122_2021_005157_e.fits'])
-    test_storage_name_2 = dao_name.DAOName(['/data/dao_c122_2021_005157.fits'])
+    test_storage_name_1 = storage_name.DAOName(['/data/dao_c122_2021_005157_e.fits'])
+    test_storage_name_2 = storage_name.DAOName(['/data/dao_c122_2021_005157.fits'])
     temp_deque.append(test_storage_name_1)
     temp_deque.append(test_storage_name_2)
     get_work_mock.return_value = temp_deque

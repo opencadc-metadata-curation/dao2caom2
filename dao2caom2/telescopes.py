@@ -78,7 +78,7 @@ from caom2 import ObservationIntentType, TypedSet, ObservationURI
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
-from dao2caom2.dao_name import DAOName, get_collection
+from dao2caom2.storage_name import DAOName, get_collection
 
 
 __all__ = ['DAOTelescopeMapping']

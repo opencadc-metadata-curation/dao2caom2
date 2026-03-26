@@ -68,7 +68,7 @@
 
 from caom2pipe import caom_composable as cc
 from caom2 import DataProductType
-from dao2caom2 import telescopes, dao_name
+from dao2caom2 import storage_name, telescopes
 
 
 class DAOFits2caom2Visitor(cc.Fits2caom2VisitorRunnerMeta):
@@ -92,7 +92,7 @@ class DAOFits2caom2Visitor(cc.Fits2caom2VisitorRunnerMeta):
         else:
             data_product_type = DAOFits2caom2Visitor.get_data_product_type(self._storage_name.metadata.get(dest_uri))
             if data_product_type == DataProductType.IMAGE:
-                if dao_name.DAOName.is_processed(self._storage_name.file_id):
+                if storage_name.DAOName.is_processed(self._storage_name.file_id):
                     if self._storage_name.is_12_metre:
                         result = telescopes.Dao12MetreProcessedImage(
                             self._storage_name,
@@ -118,7 +118,7 @@ class DAOFits2caom2Visitor(cc.Fits2caom2VisitorRunnerMeta):
                         self._storage_name, self._clients, self._reporter, self._observation, self._config
                     )
             else:
-                if dao_name.DAOName.is_processed(self._storage_name.file_id):
+                if storage_name.DAOName.is_processed(self._storage_name.file_id):
                     if self._storage_name.is_12_metre:
                         result = telescopes.Dao12MetreProcessedSpectrum(
                             self._storage_name,

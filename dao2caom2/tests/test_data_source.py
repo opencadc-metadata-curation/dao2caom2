@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -71,7 +71,7 @@ from mock import Mock, patch
 from cadcutils import exceptions
 from cadcdata import FileInfo
 from caom2pipe import manage_composable as mc
-from dao2caom2 import dao_name, data_source
+from dao2caom2 import data_source, storage_name
 
 
 @patch('caom2pipe.client_composable.vault_info', autospec=True)
@@ -176,7 +176,7 @@ def test_data_source_exists(test_config):
     test_data_client = Mock(autospec=True)
     test_subject = data_source.DAOVaultDataSource(test_config, test_vos_client, test_data_client)
     assert test_subject is not None, 'ctor failure'
-    test_storage_name = dao_name.DAOName(['vos:test/dest_fqn.fits'])
+    test_storage_name = storage_name.DAOName(['vos:test/dest_fqn.fits'])
     test_subject._work = [test_storage_name]
 
     def _get_node(uri, limit=None, force=None):
