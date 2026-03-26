@@ -16,7 +16,7 @@ ARG OPENCADC_REPO=opencadc-metadata-curation
 
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/${OPENCADC_REPO}/caom2tools.git && \
+RUN git clone https://github.com/opencadc/caom2tools.git && \
     cd caom2tools && \
     git checkout ${OPENCADC_BRANCH} && \
     pip install ./caom2utils && \
