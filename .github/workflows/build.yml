@@ -36,7 +36,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64 # Only amd64 is supported.
           push: true
           tags: ${{ vars.CI_REGISTRY_IMAGE_TAG }}
 #
