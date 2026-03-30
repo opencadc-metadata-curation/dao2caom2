@@ -80,7 +80,7 @@ class DAOFits2caom2Visitor(cc.Fits2caom2VisitorRunnerMeta):
         # I added an obsmodes hash to allow it to be imaging or Imaging but
         # all should be 'Imaging'.
         data_product_type = DataProductType.IMAGE
-        if '-slit' in obs_mode:
+        if obs_mode and '-slit' in obs_mode:
             data_product_type = DataProductType.SPECTRUM
         return data_product_type
 
