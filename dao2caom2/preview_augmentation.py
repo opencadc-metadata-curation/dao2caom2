@@ -212,7 +212,7 @@ class DAOPreview(mc.PreviewVisitor):
                 count = 2
         else:
             instrument = header.get('INSTRUME')
-            if 'Imager' in instrument:
+            if instrument and 'Imager' in instrument:
                 preview_cmd = f'convert -resize 1024x1024 -normalize -negate {self._science_fqn} {self._preview_fqn}'
                 thumbnail_cmd = f'convert -resize 256x256 -normalize -negate {self._science_fqn} {self._thumb_fqn}'
             else:

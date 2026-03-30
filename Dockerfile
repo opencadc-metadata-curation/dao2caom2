@@ -16,7 +16,7 @@ ARG OPENCADC_REPO=opencadc-metadata-curation
 
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/${OPENCADC_REPO}/caom2tools.git && \
+RUN git clone https://github.com/opencadc/caom2tools.git && \
     cd caom2tools && \
     git checkout ${OPENCADC_BRANCH} && \
     pip install ./caom2utils && \
@@ -55,20 +55,23 @@ COPY --from=builder /usr/lib/x86_64-linux-gnu/libX* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libltdl* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libgomp* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libglib* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libicuuc* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libpng* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libbrot* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libxcb* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libicudata* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libbsd* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libmd* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /etc/ImageMagick-6/ /etc/ImageMagick-6/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/ImageMagick-6.9.11/ /usr/lib/x86_64-linux-gnu/ImageMagick-6.9.11/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libexpat* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libpng* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libxcb* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libatomic* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libpcre* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /etc/ImageMagick-7/ /etc/ImageMagick-7/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/ImageMagick-7.1.1/ /usr/lib/x86_64-linux-gnu/ImageMagick-7.1.1/
 
 # fitsverify
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libcfitsio* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libcurl-gnutls* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libnghttp2* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libnghttp3* /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libngtcp2* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libidn2* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/librtmp* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libssh2* /usr/lib/x86_64-linux-gnu/
@@ -85,7 +88,6 @@ COPY --from=builder /usr/lib/x86_64-linux-gnu/libtasn1* /usr/lib/x86_64-linux-gn
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libkrb5* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libk5crypto* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libcom_err* /usr/lib/x86_64-linux-gnu/
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libkrb5support* /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libkeyutils* /usr/lib/x86_64-linux-gnu/
 
 RUN useradd --create-home --shell /bin/bash cadcops
